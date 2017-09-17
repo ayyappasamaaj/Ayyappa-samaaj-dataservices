@@ -1,0 +1,68 @@
+<div id="ebookPanel" class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Add Ebook</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Title: <i class="glyphicon glyphicon-book" style="width: auto"></i>
+                </span>
+                <input id="bookTitle" type="text" class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Category: <i class="glyphicon glyphicon-book" style="width: auto"></i>
+                </span>
+                <input id="bookCategory" type="text"  class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Sub-category<i class="glyphicon glyphicon-book" style="width: auto"></i>
+                </span>
+                <input id="bookSubCategory" type="text"  class="form-control" name="user" placeholder="(Optional)" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    URL: <i class="glyphicon glyphicon-book" style="width: auto"></i>
+                </span>
+                <input id="bookFilePath" type="text" class="form-control" name="user"  required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Language: <i class="glyphicon glyphicon-book" style="width: auto" ></i>
+                </span>
+                <input id="bookLanguage" type="text" class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Sequence: <i class="glyphicon glyphicon-book" style="width: auto"></i>
+                </span>
+                <input id="bookSequence" type="number" class="form-control" name="user" placeholder="(Optional)" required=""  />
+            </div>
+            <br /><br />
+
+            <button id="btnSaveEbook" onclick="saveEbook()" class="btn btn-default" style="width: 100%">
+                Add Ebook
+            </button>
+            <br /><br />
+            <button id="btnCancelEbook" onclick="goBack()" class="btn btn-default" style="width: 100%">
+                Cancel
+            </button>
+
+            <br /><br />
+
+            <h3 id="ebookErrorMsg" class="hidden" style="align: center; color: red">
+                Something went wrong. Please try again.
+            </h3>
+            <h3 id="ebookSuccessMsg" class="hidden" style="align: center; color: green">
+                Ebook added successfully
+            </h3>
+        </div>
+    </div>
+</div>

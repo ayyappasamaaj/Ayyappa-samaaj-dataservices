@@ -1,0 +1,73 @@
+<div id="eventsPanel" class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Add Event</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Event Name:
+                </span>
+                <input id="eventName" type="text" class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Event Description:
+                </span>
+                <input id="eventDesc" type="text"  class="form-control" name="user" placeholder="(Optional)" required="" />
+            </div>
+            <br /><br />
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Start Date:
+                </span>
+                <input id="startDate" type="datetime-local"  class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+
+            <div class="input-group">
+                <span class="input-group-addon" >
+                   End Date:
+                </span>
+                <input id="endDate" type="datetime-local"  class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Venue:
+                </span>
+                <input id="venue" type="text" class="form-control" name="user" required="" />
+            </div>
+            <br /><br />
+            <div class="input-group">
+                <span class="input-group-addon" >
+                    Registration Link:
+                </span>
+                <input id="registrationLink" type="text" class="form-control" name="user" placeholder="(Optional)" required=""  />
+            </div>
+            <br /><br />
+
+            <button id="btnSaveEvent" onclick="saveEvent()" class="btn btn-default" style="width: 100%">
+                Add Event
+            </button>
+            <br /><br />
+            <button id="btnCancelEvent" onclick="goBack()" class="btn btn-default" style="width: 100%">
+                Cancel
+            </button>
+
+            <br /><br />
+
+            <h3 id="eventErrorMsg" class="hidden" style="align: center; color: red">
+                Something went wrong. Please try again.
+            </h3>
+            <h3 id="eventSuccessMsg" class="hidden" style="align: center; color: green">
+                Event added successfully
+            </h3>
+        </div>
+    </div>
+</div>
+
