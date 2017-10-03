@@ -1,12 +1,6 @@
 server:
   context-path: /aysa
-  port: 8443
-  ssl:
-    key-store: classpath:keystore.p12
-    key-store-password: 18!Padikal18000
-    keyStoreType: PKCS12
-    keyAlias: tomcat
-
+  port: 8080
 
 spring:
   datasource:
