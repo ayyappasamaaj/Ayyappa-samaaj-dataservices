@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<springfox.version>2.7.0</springfox.version>
+		<org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
 	</properties>
 
 
@@ -44,6 +45,22 @@
 			</exclusions>
 		</dependency>
 
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-web</artifactId>-->
+			<!--<version>${org.springframework.security.version}</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-config</artifactId>-->
+			<!--<version>${org.springframework.security.version}</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-taglibs</artifactId>-->
+			<!--<version>${org.springframework.security.version}</version>-->
+		<!--</dependency>-->
+		
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
