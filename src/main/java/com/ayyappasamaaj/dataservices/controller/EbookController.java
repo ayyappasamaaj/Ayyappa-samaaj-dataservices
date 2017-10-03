@@ -31,4 +31,10 @@ public class EbookController {
         return ebookServices.saveEbookRecord(ebook);
     }
 
+    @CrossOrigin
+    @RequestMapping(value = "/saveEbookFromCsv", method = RequestMethod.GET)
+    public @ResponseBody String saveEbookDataFromCsv() {
+        ebookServices.saveEbookFromCsv();
+        return "Success";
+    }
 }

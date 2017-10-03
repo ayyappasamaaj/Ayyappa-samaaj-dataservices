@@ -8,6 +8,11 @@ import com.ayyappasamaaj.dataservices.repository.EbookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -22,7 +27,7 @@ public class EbookServices {
     public EbookResponse getAllEbookRecords () {
 
         EbookResponse ebookResponse = new EbookResponse();
-        List<Ebook> ebookList = ebookRepository.findAll();
+        List<Ebook> ebookList = ebookRepository.findAllByOrderBySequence();
 
         if ( ebookList.size() > 0) {
             ebookResponse.setStatus(EbookResponse.ResponseCode.SUCCESS);
@@ -43,7 +48,6 @@ public class EbookServices {
         try {
             ebook = ebookRepository.save(ebook);
 
-
             if (ebook != null ) {
                 ebookResponse.setStatus(EbookResponse.ResponseCode.SUCCESS);
                 ebookResponse.setMessage("");
@@ -59,54 +63,44 @@ public class EbookServices {
         return ebookResponse;
     }
 
-    /*private Map<String, List<Ebook>> groupByCategory (List<Ebook> ebookList) {
+    public void saveEbookFromCsv () {
+        String csvFileToRead = "/Users/ssurya/Desktop/ebook.csv";
+        BufferedReader br = null;
+        String line = "";
+        String splitBy = ",";
 
-        Map <String, List<Ebook>> resultMap = new HashMap<>();
+        try {
 
-        for (Ebook ebook : ebookList) {
-            if (ebook.getSubCategory() == null || ebook.getSubCategory().isEmpty()){
-                if (!resultMap.containsKey(ebook.getCategory())) {
-                    List<Ebook> list = new ArrayList<>();
-                    list.add(ebook);
-                    resultMap.put(ebook.getCategory(), list);
-                } else {
-                    resultMap.get(ebook.getCategory()).add(ebook);
+            br = new BufferedReader(new FileReader(csvFileToRead));
+            while ((line = br.readLine()) != null) {
+
+                // split on comma(',')
+                String[] ebooks = line.split(splitBy);
+
+                Ebook ebook = new Ebook();
+                ebook.setItemTitle(ebooks[0]);
+                ebook.setCategory(ebooks[1]);
+                ebook.setSubCategory(ebooks[2]);
+                ebook.setFileUrl(ebooks[3]);
+                ebook.setLanguage(ebooks[4]);
+                ebook.setSequence(Integer.valueOf(ebooks[5]));
+                saveEbookRecord(ebook);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
-
-        return resultMap;
-
     }
-
-    private Map<String, Map<String, List<Ebook>>> groupBySubCategory (List<Ebook> ebookList) {
-
-        Map<String, Map<String, List<Ebook>>> resultMap = new HashMap<>();
-
-        for (Ebook ebook : ebookList) {
-            if (ebook.getSubCategory() != null && !ebook.getSubCategory().isEmpty()){
-                if (!resultMap.containsKey(ebook.getCategory())) {
-                    Map<String, List<Ebook>> subMap = new HashMap<>();
-                    List<Ebook> ebooks = new ArrayList<>();
-                    ebooks.add(ebook);
-                    subMap.put(ebook.getSubCategory(), ebooks);
-                    resultMap.put(ebook.getCategory(), subMap);
-                } else {
-                    Map<String, List<Ebook>> subMap = resultMap.get(ebook.getCategory());
-                    if (!subMap.containsKey(ebook.getSubCategory())) {
-                        List<Ebook> list = new ArrayList<>();
-                        list.add(ebook);
-                        subMap.put(ebook.getSubCategory(), list);
-                    } else {
-                        subMap.get(ebook.getSubCategory()).add(ebook);
-                    }
-                    resultMap.put(ebook.getCategory(), subMap);
-                }
-            }
-        }
-
-        return resultMap;
-    }*/
 
     private List<EbookCategory> categorizeEbooks (List<Ebook> ebookList) {
 
