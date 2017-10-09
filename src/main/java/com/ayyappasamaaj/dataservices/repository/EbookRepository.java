@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface EbookRepository extends JpaRepository<Ebook, String>   {
 
-    public List<Ebook> findAllByOrderBySequence();
+    public List<Ebook> findAllByOrderBySequenceAscItemTitleAsc();
 
 }

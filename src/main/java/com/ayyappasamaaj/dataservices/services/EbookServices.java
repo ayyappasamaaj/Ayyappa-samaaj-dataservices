@@ -27,7 +27,7 @@ public class EbookServices {
     public EbookResponse getAllEbookRecords () {
 
         EbookResponse ebookResponse = new EbookResponse();
-        List<Ebook> ebookList = ebookRepository.findAllByOrderBySequence();
+        List<Ebook> ebookList = ebookRepository.findAllByOrderBySequenceAscItemTitleAsc();
 
         if ( ebookList.size() > 0) {
             ebookResponse.setStatus(EbookResponse.ResponseCode.SUCCESS);
